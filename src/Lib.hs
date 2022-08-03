@@ -17,4 +17,7 @@ checkSmall :: (Integral a) => a -> Bool
 checkSmall p = not . foldl (||) False $ map (divisible p) (smallPrimes 50)
 
 divisible :: (Integral a) => a -> a -> Bool
-divisible a b = if a `mod` b /= 0 then False else True
+divisible a b
+  | a == b          = False
+  | a `mod` b /= 0  = False
+  | otherwise       = True
